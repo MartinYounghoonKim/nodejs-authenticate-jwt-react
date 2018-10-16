@@ -64,21 +64,21 @@ $ cp ./backend/.env.sample ./backend/.env
 ```sql
 CREATE TABLE `users` (
       `index` int(11) NOT NULL AUTO_INCREMENT,
-      `user` varchar(50) NOT NULL,
-      `role` varchar(50) NOT NULL,
-      `position` varchar(50) NOT NULL,
-      `password` varchar(80) DEFAULT NULL,
+      user varchar(50) NOT NULL UNIQUE,
+      role varchar(50) NOT NULL,
+      position varchar(50) NOT NULL,
+      password varchar(80) DEFAULT NULL,
   PRIMARY KEY (`index`)
-) ENGINE=InnoDB AUTO_INCREMENT=8;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 
 CREATE TABLE boards (
       `index` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Board item`s primary key',
-      `user` varchar(50) NOT NULL COMMENT 'Creator',
-      `upk` int(11) NOT NULL COMMENT 'Creator`s primary key',
-      `title` varchar(50) NOT NULL COMMENT 'Board item`s title',
-      `content` mediumtext NOT NULL COMMENT 'Board item`s content',
-      `regdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Board item`s regdate',
-      `editdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Board item`s edit date',
+      user varchar(50) NOT NULL COMMENT 'Creator',
+      upk int(11) NOT NULL COMMENT 'Creator`s primary key',
+      title varchar(50) NOT NULL COMMENT 'Board item`s title',
+      content mediumtext NOT NULL COMMENT 'Board item`s content',
+      regdate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Board item`s regdate',
+      editdate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Board item`s edit date',
   PRIMARY KEY (`index`)
   
 )
