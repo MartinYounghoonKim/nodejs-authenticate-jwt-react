@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { testing } from './test.ts';
+import { generating } from './test2.ts';
 
 class App extends Component {
   test () {
-    console.log(testing(123, 123));
+      console.log(generating());
   }
   render() {
     return (
