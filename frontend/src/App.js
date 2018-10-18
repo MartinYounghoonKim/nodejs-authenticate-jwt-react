@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import './App.css';
 import {generating} from './test2.ts';
-import AppHeader from './Components/AppHeader';
+import AppHeader from './components/AppHeader';
 
 class App extends Component {
   test() {
