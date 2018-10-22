@@ -3,7 +3,7 @@ import './App.css';
 import {generating} from './test2.ts';
 import AppHeader from './Components/AppHeader';
 import Header from './Components/Header.tsx';
-import LoginForm from './Components/LoginForm.tsx';
+import LoginForm from './Components/SigninForm.tsx';
 
 class App extends Component {
   test() {
