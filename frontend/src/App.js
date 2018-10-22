@@ -2,6 +2,8 @@ import React, {Component, Fragment} from 'react';
 import './App.css';
 import {generating} from './test2.ts';
 import AppHeader from './Components/AppHeader';
+import Header from './Components/Header.tsx';
+import LoginForm from './Components/LoginForm.tsx';
 
 class App extends Component {
   test() {
@@ -48,6 +50,8 @@ class App extends Component {
     } = this.state;
     return (
         <Fragment>
+          <Header/>
+          <LoginForm/>
           <AppHeader
             counter={counter}
             addCounter={this.addCounter}
