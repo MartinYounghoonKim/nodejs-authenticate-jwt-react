@@ -42,6 +42,7 @@
     "react-app-polyfill": "^0.1.3",
     "react-dev-utils": "^6.0.5",
     "react-dom": "^16.5.2",
+    "react-router-dom": "^4.3.1",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
@@ -108,8 +109,9 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^16.4.17",
+    "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
+    "@types/react-router-dom": "^4.3.1",
     "awesome-typescript-loader": "^5.2.1",
     "typescript": "^3.1.3"
   }
