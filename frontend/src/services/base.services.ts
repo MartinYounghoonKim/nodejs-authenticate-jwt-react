@@ -1,12 +1,12 @@
 import axios, { AxiosInstance } from 'axios';
 import 'es6-promise';
 
-class BaseServices {
+export class BaseServices {
     private _axios: AxiosInstance;
 
     constructor () {
         this._axios = axios.create({
-            baseURL: ''
+            baseURL: '//localhost:8000'
         });
     }
 
@@ -29,19 +29,19 @@ class BaseServices {
             }
         }
     }
-    async post ({ uri, params }: { uri: string, params: any }): Promise<any> {
-        const { status, data } = await this._axios.post(uri, params);
-
-        if (status === 200) {
+    async post (uri: string, params: any): Promise<any> {
+        try {
+            const { status, data: { data } } = await this._axios.post(uri, params);
             return {
                 status: status,
                 data: data || null,
                 isSuccess: true,
             }
-        } else {
+        } catch (e) {
+            const { status, data: data } = e.response;
             return {
                 status: status,
-                data: data || null,
+                data: data || {},
                 isSuccess: false,
             }
         }
@@ -86,4 +86,3 @@ class BaseServices {
     }
 }
 
-export const baseServices = new BaseServices;

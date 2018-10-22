@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import {
     Home,
-    Signin
+    Signin,
+    Signup
 } from '../pages';
 
 import Navigator from '../Components/Navigator';
@@ -18,7 +19,7 @@ class App extends React.Component {
                     <Route path="/signin/:param" component={Signin}/>
                     <Route path="/signin" component={Signin}/>
                 </Switch>
-
+                <Route exact path="/signup" component={Signup}/>
             </div>
         )
     }
