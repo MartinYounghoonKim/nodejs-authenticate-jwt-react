@@ -28,7 +28,7 @@ export class BaseServices {
             }
         }
     }
-    async post<T>(uri: string, params: T): Promise<IAJAXResponse<T>> {
+    async post<T>(uri: string, params: Object): Promise<IAJAXResponse<T>> {
         try {
             const { status, data: { data } } = await this._axios.post(uri, params);
             return {

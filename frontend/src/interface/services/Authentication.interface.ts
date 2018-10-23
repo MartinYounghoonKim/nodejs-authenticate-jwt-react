@@ -11,3 +11,17 @@ export interface IRequestSignup {
     role: IUserRole;
     position: IUserPosition;
 };
+
+export interface IRequestSignin {
+    uid: string;
+    password: string;
+};
+
+export interface IResponseSignin {
+    uid: string;
+    role: IUserRole;
+    position: IUserPosition;
+    accessToken: string;
+    refreshToken: string;
+};
+

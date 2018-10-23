@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {createRef, FormEvent} from "react";
+import {authServices} from "../services/auth.services";
 
 export default class SigninForm extends React.Component<{}> {
     private userId: HTMLInputElement;
@@ -7,15 +8,18 @@ export default class SigninForm extends React.Component<{}> {
 
     submit = (e: FormEvent) => {
         e.preventDefault();
-        const userId = this.userId.value;
+        const uid = this.userId.value;
         const password = this.password.value;
-        const isEmpty = userId.length <= 0 || password.length <= 0;
+        const isEmpty = uid.length <= 0 || password.length <= 0;
 
         if (isEmpty) {
             console.log(1);
         }
 
-        console.log({ userId, password });
+        authServices.signin({ uid, password })
+            .then(userInformation => {
+                console.log(userInformation);
+            });
     };
     render () {
         return (
