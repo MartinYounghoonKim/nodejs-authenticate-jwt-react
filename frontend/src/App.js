@@ -3,7 +3,7 @@ import React, {Component, Fragment} from 'react';
 import {generating} from './test2.ts';
 import AppHeader from './components/AppHeader';
 import Header from './components/Header.tsx';
-import LoginForm from './components/SigninForm.tsx';
+import LoginForm from './components/form/SigninForm.tsx';
 
 class App extends Component {
   test() {

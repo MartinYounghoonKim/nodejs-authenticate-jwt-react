@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { match } from 'react-router';
 
-import SigninForm from '../components/SigninForm';
+import SigninForm from '../components/form/SigninForm';
 
 const Signin = ({ match, history }: { match: match<{param: string}>, history: any }) => (
     <div>

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ChangeEvent, FormEvent } from "react";
-import {authServices} from "../services/auth.services";
+import {authServices} from "../../services/auth.services";
 import {RouteComponentProps} from "react-router";
-import { IUserPosition, IUserRole } from "../interface/services/Authentication.interface";
+import { IUserPosition, IUserRole } from "../../interface/services/Authentication.interface";
 
 /**
  * @description Props 의 interface

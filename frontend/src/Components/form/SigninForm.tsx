@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {createRef, FormEvent} from "react";
-import {authServices} from "../services/auth.services";
+import {authServices} from "../../services/auth.services";
 
 export default class SigninForm extends React.Component<{}> {
     private userId: HTMLInputElement;
