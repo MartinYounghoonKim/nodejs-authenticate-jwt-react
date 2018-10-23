@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import 'es6-promise';
+import { IAJAXResponse } from "../interface/utils/AJAX.interface";
 
 export class BaseServices {
     private _axios: AxiosInstance;
@@ -29,7 +30,7 @@ export class BaseServices {
             }
         }
     }
-    async post (uri: string, params: any): Promise<any> {
+    async post<T>(uri: string, params: any): Promise<IAJAXResponse<T>> {
         try {
             const { status, data: { data } } = await this._axios.post(uri, params);
             return {

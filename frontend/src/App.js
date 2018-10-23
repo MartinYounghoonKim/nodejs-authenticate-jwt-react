@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import './App.css';
+// import './App.css';
 import {generating} from './test2.ts';
-import AppHeader from './Components/AppHeader';
-import Header from './Components/Header.tsx';
-import LoginForm from './Components/SigninForm.tsx';
+import AppHeader from './components/AppHeader';
+import Header from './components/Header.tsx';
+import LoginForm from './components/SigninForm.tsx';
 
 class App extends Component {
   test() {

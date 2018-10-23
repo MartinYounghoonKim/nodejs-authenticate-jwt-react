@@ -6,7 +6,7 @@ import {
     Signup
 } from '../pages';
 
-import Navigator from '../Components/Navigator';
+import Navigator from '../components/Navigator';
 
 class App extends React.Component {
     constructor(props: any) {

@@ -1,5 +1,6 @@
 'use strict';
 
+
 const path = require('path');
 const webpack = require('webpack');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
@@ -13,6 +14,7 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -184,7 +186,7 @@ module.exports = {
         ],
         include: paths.appSrc,
       },
-      { test: /\.(ts|tsx)$/, loader: "awesome-typescript-loader" },
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -329,6 +331,7 @@ module.exports = {
   },
   plugins: [
     // Generates an `index.html` file with the <script> injected.
+    new CheckerPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,

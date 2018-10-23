@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from "react-router";
 
-import SignupForm from '../Components/SignupForm';
+import SignupForm from '../components/SignupForm';
 
 const Signup = (props: RouteComponentProps) => (
     <div>
