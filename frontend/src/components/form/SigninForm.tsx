@@ -6,22 +6,22 @@ export default class SigninForm extends React.Component<{}> {
     private userId: HTMLInputElement;
     private password: HTMLInputElement;
 
-    submit = (e: FormEvent) => {
+    public submit = (e: FormEvent): void => {
         e.preventDefault();
         const uid = this.userId.value;
         const password = this.password.value;
         const isEmpty = uid.length <= 0 || password.length <= 0;
 
         if (isEmpty) {
-            console.log(1);
+            return;
         }
 
         authServices.signin({ uid, password })
             .then(userInformation => {
-                console.log(userInformation);
+                // console.log(userInformation);
             });
     };
-    render () {
+    public render () {
         return (
             <div>
                 <form onSubmit={this.submit}>

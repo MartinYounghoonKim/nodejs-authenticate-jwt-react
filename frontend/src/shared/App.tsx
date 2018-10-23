@@ -9,16 +9,17 @@ import {
 import Navigator from '../components/Navigator';
 
 class App extends React.Component {
-    render () {
+    public dynamicImport = () => (<Home/>);
+    public render () {
         return (
             <div>
                 <Navigator/>
                 <div>asdf</div>
                 <Switch>
-                    <Route exact path="/" component={() => <Home/>}/>
+                    <Route exact={true} path="/" component={this.dynamicImport}/>
                     <Route path="/signin/:param" component={Signin}/>
                     <Route path="/signin" component={Signin}/>
-                    <Route exact path="/signup" component={Signup}/>
+                    <Route exact={true} path="/signup" component={Signup}/>
                 </Switch>
             </div>
         )

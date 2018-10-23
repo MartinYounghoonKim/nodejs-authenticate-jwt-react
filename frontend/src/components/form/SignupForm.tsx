@@ -7,9 +7,6 @@ import { IUserPosition, IUserRole } from "../../interface/services/Authenticatio
 /**
  * @description Props 의 interface
  */
-interface IProps extends RouteComponentProps {
-
-}
 interface IState extends ISelectbox {
     role: IUserRole;
     roleOptions: IUserRole[];
@@ -19,10 +16,10 @@ interface IState extends ISelectbox {
 type ISelectboxOptions = 'position' | 'role';
 type ISelectbox = { [key in ISelectboxOptions]: IUserPosition | IUserRole };
 
-export default class SigninForm extends React.Component<IProps, IState> {
+export default class SigninForm extends React.Component<RouteComponentProps, IState> {
     private uid: HTMLInputElement;
     private password: HTMLInputElement;
-    constructor (props: IProps) {
+    constructor (props: RouteComponentProps) {
         super(props);
         this.state = {
             role: '',
@@ -32,7 +29,7 @@ export default class SigninForm extends React.Component<IProps, IState> {
         };
     }
 
-    submit = (e: FormEvent): void => {
+    public submit = (e: FormEvent): void => {
         e.preventDefault();
         const uid = this.uid.value;
         const password = this.password.value;
@@ -57,7 +54,7 @@ export default class SigninForm extends React.Component<IProps, IState> {
             [type]: value
         } as IState);
     }
-    render () {
+    public render () {
         const {
             role,
             roleOptions,

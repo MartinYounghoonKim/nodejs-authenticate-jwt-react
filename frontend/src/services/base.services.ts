@@ -3,78 +3,78 @@ import 'es6-promise';
 import { IAJAXResponse } from "../interface/utils/AJAX.interface";
 
 export class BaseServices {
-    private _axios: AxiosInstance;
+    private axios: AxiosInstance;
 
     constructor () {
-        this._axios = axios.create({
+        this.axios = axios.create({
             baseURL: '//localhost:8000'
         });
     }
 
-    async get<T>(uri: string): Promise<IAJAXResponse<T>> {
+    public async get<T>(uri: string): Promise<IAJAXResponse<T>> {
         try {
-            const { status, data: { data } } = await this._axios.get(uri);
+            const { status, data: { data = null } } = await this.axios.get(uri);
             return {
-                status: status,
-                data: data || null,
+                data,
+                status,
                 isSuccess: true,
             }
         } catch (e) {
-            const { status, data: data } = e.response;
+            const { status, data = null } = e.response;
             return {
-                status: status,
-                data: data || {},
+                data,
+                status,
                 isSuccess: false,
             }
         }
     }
-    async post<T>(uri: string, params: Object): Promise<IAJAXResponse<T>> {
+    public async post<T>(uri: string, params: object): Promise<IAJAXResponse<T>> {
         try {
-            const { status, data: { data } } = await this._axios.post(uri, params);
+            const { status, data: { data = null } } = await this.axios.post(uri, params);
             return {
-                status: status,
-                data: data || null,
+                data,
+                status,
                 isSuccess: true,
             }
         } catch (e) {
-            const { status, data: data } = e.response;
+            const { status, data = null } = e.response;
             return {
-                status: status,
-                data: data || {},
+                data,
+                status,
                 isSuccess: false,
             }
         }
     }
-    async delete<T>(uri: string): Promise<IAJAXResponse<T>> {
+    public async delete<T>(uri: string): Promise<IAJAXResponse<T>> {
         try {
-            const { status, data: { data } } = await this._axios.delete(uri);
+            const { status, data: { data = null } } = await this.axios.delete(uri);
             return {
-                status: status,
-                data: data || null,
+                data,
+                status,
                 isSuccess: true,
             }
         } catch (e) {
-            const { status, data: data } = e.response;
+            const { status, data = null } = e.response;
             return {
-                status: status,
-                data: data || {},
+                data,
+                status,
                 isSuccess: false,
             }
         }
     }
-    async put<T>(uri: string, params: T) :Promise<IAJAXResponse<T>> {
+    public async put<T>(uri: string, params: T) :Promise<IAJAXResponse<T>> {
         try {
-            const { status, data: { data } } = await this._axios.put(uri, params);
+            const { status, data: { data = null } } = await this.axios.put(uri, params);
             return {
-                status: status,
-                data: data || null,
+                data,
+                status,
                 isSuccess: true,
             }
         } catch (e) {
-            const { status, data: data } = e.response;
+            const { status, data = null } = e.response;
             return {
-                status: status,
-                data: data || {},
+                data,
+                status,
                 isSuccess: false,
             }
         }

@@ -1,7 +1,8 @@
 import { BaseServices } from "./base.services";
 import {
     IRequestSignin,
-    IRequestSignup, IResponseSignin
+    IRequestSignup,
+    IResponseSignin
 } from "../interface/services/Authentication.interface";
 
 class AuthServices extends BaseServices {
@@ -9,7 +10,7 @@ class AuthServices extends BaseServices {
         super();
     }
 
-    signup (payload: IRequestSignup): Promise<void> {
+    public signup (payload: IRequestSignup): Promise<void> {
         const uri = '/auth/signup';
 
         return this.post<{}>(uri, payload)
@@ -21,7 +22,7 @@ class AuthServices extends BaseServices {
             });
     }
 
-    signin (payload: IRequestSignin): Promise<IResponseSignin> {
+    public signin (payload: IRequestSignin): Promise<IResponseSignin> {
         const uri = '/auth/signin';
 
         return this.post<IResponseSignin>(uri, payload)
