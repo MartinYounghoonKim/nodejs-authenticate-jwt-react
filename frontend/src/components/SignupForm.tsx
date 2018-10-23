@@ -80,7 +80,7 @@ export default class SigninForm extends React.Component<IProps, IState> {
                             role
                             <select value={role} onChange={(e) => this.handleChange(e, 'role')}>
                                 {positionOptions.map((positionOption) => (
-                                    <option value={positionOption}>{positionOption}</option>
+                                    <option value={positionOption} key={positionOption}>{positionOption}</option>
                                 ))}
                                 <option value="Guest">Guest</option>
                             </select>
@@ -89,7 +89,7 @@ export default class SigninForm extends React.Component<IProps, IState> {
                             position
                             <select value={position} onChange={(e) => this.handleChange(e, 'position')}>
                                 {roleOptions.map((roleOption) => (
-                                    <option value={roleOption}>{roleOption}</option>
+                                    <option value={roleOption} key={roleOption}>{roleOption}</option>
                                 ))};
                             </select>
                         </label>
