@@ -5,14 +5,14 @@ class AuthServices extends BaseServices {
         super();
     }
 
-    signup (payload: any): any {
+    signup (payload: any): Promise<void> {
         const uri = '/auth/signup';
-        this.post(uri, payload)
+        return this.post(uri, payload)
             .then((res: any) => {
-                console.log(res);
+                return Promise.resolve();
             })
             .catch((err: any) => {
-                console.log(err);
+                return Promise.reject();
             });
     }
 }

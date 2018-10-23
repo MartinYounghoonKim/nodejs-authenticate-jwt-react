@@ -9,17 +9,21 @@ import {
 import Navigator from '../Components/Navigator';
 
 class App extends React.Component {
+    constructor(props: any) {
+        super(props);
+    }
+
     render () {
         return (
             <div>
                 <Navigator/>
                 <div>asdf</div>
-                <Route exact path="/" component={Home}/>
                 <Switch>
+                    <Route exact path="/" component={() => <Home/>}/>
                     <Route path="/signin/:param" component={Signin}/>
                     <Route path="/signin" component={Signin}/>
+                    <Route exact path="/signup" component={Signup}/>
                 </Switch>
-                <Route exact path="/signup" component={Signup}/>
             </div>
         )
     }

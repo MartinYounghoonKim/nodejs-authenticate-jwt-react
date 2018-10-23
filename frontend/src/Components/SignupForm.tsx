@@ -1,12 +1,25 @@
 import * as React from 'react';
 import { FormEvent } from "react";
 import {authServices} from "../services/auth.services";
+import {RouteComponentProps} from "react-router";
 
-export default class SigninForm extends React.Component<{}> {
+/**
+ * @description Props 의 interface
+ */
+interface IProps extends RouteComponentProps {
+
+}
+interface IState {
+
+}
+export default class SigninForm extends React.Component<IProps, IState> {
     private uid: HTMLInputElement;
     private password: HTMLInputElement;
     private role: HTMLInputElement;
     private position: HTMLInputElement;
+    constructor (props: IProps) {
+        super(props);
+    }
 
     submit = (e: FormEvent): void => {
         e.preventDefault();
@@ -20,9 +33,9 @@ export default class SigninForm extends React.Component<{}> {
             return;
         }
         authServices.signup({ uid, password, role, position })
-            // .then(res => {
-            //     console.log(res);
-            // })
+            .then(() => {
+                this.props.history.push('/');
+            })
 
     };
     render () {
