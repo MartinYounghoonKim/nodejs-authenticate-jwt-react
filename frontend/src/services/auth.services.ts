@@ -3,10 +3,6 @@ import {
     IRequestSignup
 } from "../interface/services/Authentication.interface";
 
-interface IResponseSignuo {
-    uid: string;
-    password: string;
-}
 class AuthServices extends BaseServices {
     constructor () {
         super();
@@ -15,7 +11,7 @@ class AuthServices extends BaseServices {
     signup (payload: IRequestSignup): Promise<void> {
         const uri = '/auth/signup';
 
-        return this.post<IResponseSignuo>(uri, payload)
+        return this.post<{}>(uri, payload)
             .then(res => {
                 return Promise.resolve();
             })
