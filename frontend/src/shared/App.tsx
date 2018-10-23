@@ -9,10 +9,6 @@ import {
 import Navigator from '../components/Navigator';
 
 class App extends React.Component {
-    constructor(props: any) {
-        super(props);
-    }
-
     render () {
         return (
             <div>

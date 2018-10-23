@@ -19,7 +19,7 @@ interface IState extends ISelectbox {
 type ISelectboxOptions = 'position' | 'role';
 type ISelectbox = { [key in ISelectboxOptions]: IUserPosition | IUserRole };
 
-export default class SigninForm extends React.Component<IProps, Partial<IState>> {
+export default class SigninForm extends React.Component<IProps, IState> {
     private uid: HTMLInputElement;
     private password: HTMLInputElement;
     constructor (props: IProps) {
@@ -47,14 +47,15 @@ export default class SigninForm extends React.Component<IProps, Partial<IState>>
                 this.props.history.push('/');
             })
     };
-    handleChange (e: ChangeEvent<HTMLSelectElement>, type: ISelectboxOptions) {
+    public handleChange (e: ChangeEvent<HTMLSelectElement>, type: ISelectboxOptions) {
         /**
          * @reference https://stackoverflow.com/questions/37300933/allow-typescript-compiler-to-call-setstate-on-only-one-react-state-property
          */
-        const { value } = e.target;
+
+        const { value }: any = e.target;
         this.setState({
             [type]: value
-        });
+        } as IState);
     }
     render () {
         const {

@@ -11,26 +11,24 @@ export class BaseServices {
         });
     }
 
-    async get (uri: string): Promise<any> {
-        const { status, data } = await this._axios.get(uri);
-
-        if (status === 200) {
+    async get<T>(uri: string): Promise<IAJAXResponse<T>> {
+        try {
+            const { status, data: { data } } = await this._axios.get(uri);
             return {
                 status: status,
+                data: data || null,
                 isSuccess: true,
-                message: data.message || '',
-                data: data || null,
             }
-        } else {
+        } catch (e) {
+            const { status, data: data } = e.response;
             return {
                 status: status,
+                data: data || {},
                 isSuccess: false,
-                message: data.message || '',
-                data: data || null,
             }
         }
     }
-    async post<T>(uri: string, params: any): Promise<IAJAXResponse<T>> {
+    async post<T>(uri: string, params: T): Promise<IAJAXResponse<T>> {
         try {
             const { status, data: { data } } = await this._axios.post(uri, params);
             return {
@@ -47,41 +45,37 @@ export class BaseServices {
             }
         }
     }
-    async delete (uri: string) {
-        const { status, data } = await this._axios.delete(uri);
-
-        if (status === 200) {
+    async delete<T>(uri: string): Promise<IAJAXResponse<T>> {
+        try {
+            const { status, data: { data } } = await this._axios.delete(uri);
             return {
                 status: status,
+                data: data || null,
                 isSuccess: true,
-                message: data.message || '',
-                data: data || null,
             }
-        } else {
+        } catch (e) {
+            const { status, data: data } = e.response;
             return {
                 status: status,
+                data: data || {},
                 isSuccess: false,
-                message: data.message || '',
-                data: data || null,
             }
         }
     }
-    async put ({ uri, params }: { uri: string, params: any }) {
-        const { status, data } = await this._axios.put(uri, params);
-
-        if (status === 200) {
+    async put<T>(uri: string, params: T) :Promise<IAJAXResponse<T>> {
+        try {
+            const { status, data: { data } } = await this._axios.put(uri, params);
             return {
                 status: status,
+                data: data || null,
                 isSuccess: true,
-                message: data.message || '',
-                data: data || null,
             }
-        } else {
+        } catch (e) {
+            const { status, data: data } = e.response;
             return {
                 status: status,
+                data: data || {},
                 isSuccess: false,
-                message: data.message || '',
-                data: data || null,
             }
         }
     }
