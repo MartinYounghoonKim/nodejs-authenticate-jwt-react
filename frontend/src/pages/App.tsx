@@ -4,7 +4,7 @@ import {
     Home,
     Signin,
     Signup
-} from '../pages';
+} from './index';
 
 import Navigator from '../components/Navigator';
 
