@@ -5,13 +5,13 @@
 export type IUserPosition = 'Developer' | 'Designer' | 'Director' | '';
 export type IUserRole = 'Admin' | 'Guest' | '';
 
-export enum UserPosition {
+export const enum UserPosition {
     DEVELOPER = 'Developer',
     DESIGNER  = 'Designer',
     DIRECTOR = 'Director',
 }
 
-export enum UserRole {
+export const enum UserRole {
     ADMIN = 'Admin',
     GUEST = 'Guest',
 }
