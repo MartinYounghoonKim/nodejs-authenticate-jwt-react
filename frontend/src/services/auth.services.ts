@@ -18,7 +18,7 @@ class AuthServices extends BaseServices {
                 return Promise.resolve();
             })
             .catch(err => {
-                return Promise.reject();
+                return Promise.reject(err);
             });
     }
 

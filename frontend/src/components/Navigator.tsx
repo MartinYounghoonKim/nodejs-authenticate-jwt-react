@@ -11,6 +11,7 @@ const Navigator = (): JSX.Element => {
             <ul>
                 <li><NavLink to="/" activeStyle={activeStyle} exact={true}>Home</NavLink></li>
                 <li><NavLink to="/signin" activeClassName="active" activeStyle={activeStyle}>Signin</NavLink></li>
+                <li><NavLink to="/signup" activeClassName="active" activeStyle={activeStyle}>Signup</NavLink></li>
             </ul>
         </div>
     )

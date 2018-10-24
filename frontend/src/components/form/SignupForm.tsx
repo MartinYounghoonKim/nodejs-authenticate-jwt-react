@@ -2,19 +2,41 @@ import * as React from 'react';
 import { ChangeEvent, FormEvent } from "react";
 import {authServices} from "../../services/auth.services";
 import {RouteComponentProps} from "react-router";
-import { IUserPosition, IUserRole } from "../../interface/services/Authentication.interface";
-
+import Selectbox from '../../components/utils/Selectbox';
+import { UserRole, UserPosition } from '../../interface/services/Authentication.interface';
 /**
  * @description Props 의 interface
  */
-interface IState extends ISelectbox {
-    role: IUserRole;
-    roleOptions: IUserRole[];
-    position: IUserPosition;
-    positionOptions: IUserPosition[];
+interface IState {
+    role: UserRole.GUEST | UserRole.ADMIN;
+    position: UserPosition.DIRECTOR | UserPosition.DEVELOPER | UserPosition.DESIGNER ;
 }
+const roleOptions = [
+    {
+        text: UserRole.ADMIN,
+        value: UserRole.ADMIN,
+    },
+    {
+        text: UserRole.GUEST,
+        value: UserRole.GUEST,
+    },
+];
+const positionOptions = [
+    {
+        text: UserPosition.DESIGNER,
+        value: UserPosition.DESIGNER,
+    },
+    {
+        text: UserPosition.DEVELOPER,
+        value: UserPosition.DEVELOPER,
+    },
+    {
+        text: UserPosition.DIRECTOR,
+        value: UserPosition.DIRECTOR,
+    },
+];
+
 type ISelectboxOptions = 'position' | 'role';
-type ISelectbox = { [key in ISelectboxOptions]: IUserPosition | IUserRole };
 
 export default class SigninForm extends React.Component<RouteComponentProps, IState> {
     private uid: HTMLInputElement;
@@ -22,10 +44,8 @@ export default class SigninForm extends React.Component<RouteComponentProps, ISt
     constructor (props: RouteComponentProps) {
         super(props);
         this.state = {
-            role: '',
-            roleOptions: ['Admin', 'Guest'],
-            positionOptions: ['Developer', 'Designer', 'Director'],
-            position: ''
+            role: UserRole.GUEST,
+            position: UserPosition.DESIGNER
         };
     }
 
@@ -35,31 +55,38 @@ export default class SigninForm extends React.Component<RouteComponentProps, ISt
         const password = this.password.value;
         const { role, position } = this.state;
         const isEmpty = uid.length <= 0 || password.length <= 0 || role.length <= 0 || position.length <= 0;
-
         if (isEmpty) {
             return;
         }
+
         authServices.signup({ uid, password, role, position })
             .then(() => {
                 this.props.history.push('/');
             })
+            .catch(() => {
+                alert('가입실패');
+            })
     };
-    public handleChange (e: ChangeEvent<HTMLSelectElement>, type: ISelectboxOptions) {
+    public changeRole = (e: ChangeEvent<HTMLSelectElement>) => {
         /**
          * @reference https://stackoverflow.com/questions/37300933/allow-typescript-compiler-to-call-setstate-on-only-one-react-state-property
          */
-
-        const { value }: any = e.target;
+        const { value } = e.target;
         this.setState({
-            [type]: value
+            role: value
         } as IState);
-    }
+    };
+    public changePosition = (e: ChangeEvent<HTMLSelectElement>) => {
+        const { value } = e.target;
+        this.setState({
+            position: value
+        } as IState);
+    };
+
     public render () {
         const {
             role,
-            roleOptions,
             position,
-            positionOptions,
         } = this.state;
         return (
             <div>
@@ -75,20 +102,19 @@ export default class SigninForm extends React.Component<RouteComponentProps, ISt
                         </label>
                         <label>
                             role
-                            <select value={role} onChange={(e) => this.handleChange(e, 'role')}>
-                                {positionOptions.map((positionOption) => (
-                                    <option value={positionOption} key={positionOption}>{positionOption}</option>
-                                ))}
-                                <option value="Guest">Guest</option>
-                            </select>
+                            <Selectbox
+                                options={roleOptions}
+                                onChange={this.changeRole}
+                                value={role}
+                            />
                         </label>
                         <label>
                             position
-                            <select value={position} onChange={(e) => this.handleChange(e, 'position')}>
-                                {roleOptions.map((roleOption) => (
-                                    <option value={roleOption} key={roleOption}>{roleOption}</option>
-                                ))};
-                            </select>
+                            <Selectbox
+                                options={positionOptions}
+                                onChange={this.changePosition}
+                                value={position}
+                            />
                         </label>
                         <button type="submit">Signin</button>
                     </fieldset>

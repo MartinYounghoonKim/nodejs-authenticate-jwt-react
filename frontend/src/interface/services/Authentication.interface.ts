@@ -5,6 +5,17 @@
 export type IUserPosition = 'Developer' | 'Designer' | 'Director' | '';
 export type IUserRole = 'Admin' | 'Guest' | '';
 
+export enum UserPosition {
+    DEVELOPER = 'Developer',
+    DESIGNER  = 'Designer',
+    DIRECTOR = 'Director',
+}
+
+export enum UserRole {
+    ADMIN = 'Admin',
+    GUEST = 'Guest',
+}
+
 export interface IRequestSignup {
     uid: string;
     password: string;

@@ -22,6 +22,7 @@
       "check-format",
       "allow-pascal-case"
     ],
+    "no-empty-interface": false,
     // https://github.com/palantir/tslint/issues/1605
     "naming-convention": [
       true,
