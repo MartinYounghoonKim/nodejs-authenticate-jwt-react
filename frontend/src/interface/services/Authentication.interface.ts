@@ -36,3 +36,7 @@ export interface IResponseSignin {
     refreshToken: string;
 };
 
+export interface IResponseReissueAccessToken {
+    accessToken: string;
+}
+
