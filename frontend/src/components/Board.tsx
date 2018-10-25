@@ -2,7 +2,8 @@ import * as React from 'react';
 import { boardServices } from '../services/board.services';
 import {IBoardItem} from "../interface/services/Board.interface";
 import Moment from 'react-moment';
-import InfiniteScroll from 'react-infinite-scroller';
+
+import InfinitetTable from '../components/utils/InfiniteTable';
 
 interface IProps {
     
@@ -41,6 +42,7 @@ class Board extends React.Component<IProps, IState> {
     };
 
     public loadFunc = () => {
+        console.log(123);
         // boardServices.fetchBoard()
         //     .then(boardItems => {
         //         this.setState({
@@ -51,23 +53,12 @@ class Board extends React.Component<IProps, IState> {
     };
 
     render () {
-        const item = 1;
-        const style ={
-            height: '100px',
-            overflow: 'auto'
-        };
         const {
             items
         } = this.state;
         return (
             <div>
-                {/*<InfiniteScroll*/}
-                    {/*pageStart={0}*/}
-                    {/*loadMore={this.loadFunc}*/}
-                    {/*hasMore={true}*/}
-                    {/*loader={<div className="loader" key={0}>Loading ...</div>}*/}
-                    {/*useWindow={false}*/}
-                {/*>*/}
+                <InfinitetTable height="100px" loadFunction={this.loadFunc}>
                     <table>
                         <thead>
                             <tr>
@@ -92,7 +83,7 @@ class Board extends React.Component<IProps, IState> {
                             ))}
                         </tbody>
                     </table>
-                {/*</InfiniteScroll>*/}
+                </InfinitetTable>
             </div>
         )
     }
