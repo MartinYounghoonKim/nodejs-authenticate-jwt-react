@@ -3,23 +3,23 @@ import { Route, Switch } from 'react-router-dom';
 import {
     Home,
     Signin,
-    Signup
+    Signup,
+    RegisterBoard
 } from './index';
 
 import Navigator from '../components/Navigator';
 
 class App extends React.Component {
-    public dynamicImport = () => (<Home/>);
     public render () {
         return (
             <div>
                 <Navigator/>
-                <div>asdf</div>
                 <Switch>
-                    <Route exact={true} path="/" component={this.dynamicImport}/>
+                    <Route exact={true} path="/" component={() => (<Home/>)}/>
                     <Route path="/signin/:param" component={Signin}/>
                     <Route path="/signin" component={Signin}/>
                     <Route exact={true} path="/signup" component={Signup}/>
+                    <Route path="/register" component={RegisterBoard}/>
                 </Switch>
             </div>
         )

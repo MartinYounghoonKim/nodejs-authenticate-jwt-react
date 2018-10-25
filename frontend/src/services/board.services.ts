@@ -6,12 +6,12 @@ class BoardServices extends BaseServices {
         super();
     }
 
-    public fetchBoard (): Promise<any> {
+    public fetchBoard (): Promise<IBoardItem[]> {
         const uri = '/board';
 
         return this.get<any>(uri)
             .then(res => {
-                return Promise.resolve(res);
+                return Promise.resolve(res.data);
             })
             .catch(err => {
                 return Promise.reject();

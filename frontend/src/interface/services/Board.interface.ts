@@ -1,3 +1,5 @@
+import { BaseServices } from "../../services/base.services";
+
 export interface ICreateBoardItem {
     title: string;
     content: string;
@@ -6,8 +8,9 @@ export interface ICreateBoardItem {
 export interface IBoardItem {
     upk: string;
     index: number;
-    uid: string;
+    user: string;
     title: string;
     content: string;
-    regdate: Date;
+    regdate: string;
 }
+
