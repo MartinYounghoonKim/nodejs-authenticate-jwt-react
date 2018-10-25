@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
-// import { Router, browserHistory } from 'react-router'
-// import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+// import { Router, Router } from 'react-router'
+import { routerMiddleware, routerReducer } from 'react-router-redux'
 
 import {
     Home,
@@ -20,7 +20,7 @@ class App extends React.Component {
             <div>
                 <Navigator/>
                 <Switch>
-                    <Route exact={true} path="/" component={() => (<Home/>)}/>
+                    <Route exact={true} path="/" component={<Home/>}/>
                     <Route path="/signin/:param" component={Signin}/>
                     <Route path="/signin" component={Signin}/>
                     <Route exact={true} path="/signup" component={Signup}/>

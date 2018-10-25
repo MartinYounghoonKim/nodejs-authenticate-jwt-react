@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {createRef, FormEvent} from "react";
 import {authServices} from "../../services/auth.services";
+import {History} from "history";
 
 interface IProps {
     onSignin: () => void;
+    history: History;
 }
 
 export default class SigninForm extends React.Component<IProps> {

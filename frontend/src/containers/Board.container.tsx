@@ -5,8 +5,11 @@ import InfinitetTable from '../components/utils/InfiniteTable';
 
 import {boardServices} from "../services/board.services";
 import {IBoardItem} from "../interface/services/Board.interface";
+import {History} from "history";
 
-interface IProps {}
+interface IProps {
+    history: History
+}
 interface IStates {
     items: IBoardItem[];
 }
@@ -30,6 +33,7 @@ class BoardContainer extends React.Component<IProps, IStates> {
             });
     }
     public redirectDetailPage = (index: number) => {
+        this.props.history.push('/');
         // console.log(index);
     };
 
