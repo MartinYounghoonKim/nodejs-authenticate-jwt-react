@@ -2,7 +2,11 @@ import * as React from 'react';
 import {createRef, FormEvent} from "react";
 import {authServices} from "../../services/auth.services";
 
-export default class SigninForm extends React.Component<{}> {
+interface IProps {
+    onSignin: () => void;
+}
+
+export default class SigninForm extends React.Component<IProps> {
     private userId: HTMLInputElement;
     private password: HTMLInputElement;
 
@@ -18,6 +22,7 @@ export default class SigninForm extends React.Component<{}> {
 
         authServices.signin({ uid, password })
             .then(userInformation => {
+                this.props.onSignin();
                 // console.log(userInformation);
             });
     };

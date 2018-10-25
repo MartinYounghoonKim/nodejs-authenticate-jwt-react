@@ -4,6 +4,7 @@ import {
     IRequestSignup,
     IResponseSignin
 } from "../interface/services/Authentication.interface";
+import { cookieHelper } from '../helpers/cookie.helper';
 
 class AuthServices extends BaseServices {
     constructor () {
@@ -27,6 +28,10 @@ class AuthServices extends BaseServices {
 
         return this.post<IResponseSignin>(uri, payload)
             .then(res => {
+                const { accessToken } = res.data;
+                this.setAccessToken(accessToken);
+                cookieHelper.set('accessToken', accessToken);
+
                 return Promise.resolve(res.data);
             })
             .catch(err => {

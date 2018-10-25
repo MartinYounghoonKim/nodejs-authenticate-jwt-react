@@ -10,12 +10,16 @@ export interface IAJAXResponse<T> {
 }
 
 export class BaseServices {
-    private axios: AxiosInstance;
+    private readonly axios: AxiosInstance;
 
     constructor () {
         this.axios = axios.create({
             baseURL: '//localhost:8000'
         });
+    }
+
+    protected setAccessToken (accessToken: string) {
+        this.axios.defaults.headers.common['x-access-token'] = accessToken;
     }
 
     protected async get<T>(uri: string): Promise<IAJAXResponse<T>> {
@@ -96,7 +100,7 @@ export class BaseServices {
         }
     }
 
-    private async reissueAccessToken (): Promise<IAJAXResponse<IResponseReissueAccessToken>> {
+    protected async reissueAccessToken (): Promise<IAJAXResponse<IResponseReissueAccessToken>> {
         const uri = '/auth/reissuance';
         try {
             const { status, data: { data = null }} = await this.axios.get(uri);
