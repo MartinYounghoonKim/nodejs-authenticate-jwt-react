@@ -29,6 +29,10 @@ class BoardContainer extends React.Component<IProps, IStates> {
                 });
             });
     }
+    public redirectDetailPage = (index: number) => {
+        console.log(index);
+    };
+
     public deleteBoardItem = (index: number) => {
         boardServices.deleteBoard(index)
             .then(res => {
@@ -42,13 +46,15 @@ class BoardContainer extends React.Component<IProps, IStates> {
             items
         } = this.state;
         const {
-            deleteBoardItem
+            deleteBoardItem,
+            redirectDetailPage,
         } = this;
         return (
             <Fragment>
-                <InfinitetTable height="100px" loadFunction={this.loadFunc}>
+                <InfinitetTable loadFunction={this.loadFunc}>
                     <Board
                         items={items}
+                        redirectEvent={redirectDetailPage}
                         deleteEvent={deleteBoardItem}
                     />
                 </InfinitetTable>

@@ -8,7 +8,8 @@ import { ReactNode } from "react";
 interface IProps {
     children: {
         header: ReactNode,
-        content: ReactNode
+        content: ReactNode,
+        actions: ReactNode
     };
     isShow?: boolean;
 }

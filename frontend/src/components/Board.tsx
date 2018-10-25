@@ -4,10 +4,11 @@ import Moment from 'react-moment';
 
 interface IProps {
     items: IBoardItem[];
+    redirectEvent: (index: number) => void;
     deleteEvent: (key: number) => void;
 }
 
-const Board = ({ items, deleteEvent }: IProps) => {
+const Board = ({ redirectEvent, items, deleteEvent }: IProps) => {
     return (
         <table>
             <thead>
@@ -22,7 +23,8 @@ const Board = ({ items, deleteEvent }: IProps) => {
             </thead>
             <tbody>
                 {items.filter((v) => v.upk === 10).map(({ index, user, title, content, regdate }) => (
-                    <tr key={index}>
+                    <tr onClick={() => redirectEvent(index)}
+                        key={index}>
                         <td>{index}</td>
                         <td>{title}</td>
                         <td>{content}</td>

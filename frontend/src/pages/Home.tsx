@@ -1,22 +1,14 @@
 import * as React from 'react';
-// import Table from '../components/utils/Table';
-import Modal from '../components/utils/Modal';
+
 import BoardContainer from '../containers/Board.container';
+import BoardModalContainer from '../containers/BoardModal.container';
 
 const Home = () => {
     return (
         <div>
-            <h2>
-                홈
-            </h2>
+            <h2>게시판</h2>
             <BoardContainer/>
-            <Modal>
-                {{
-                    header: 'test',
-                    content: (<h1>asdf</h1>)
-                }}
-            </Modal>
-            {/*<Table/>*/}
+            <BoardModalContainer/>
         </div>
     )
 };
