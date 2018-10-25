@@ -6,7 +6,7 @@ export interface ICreateBoardItem {
 }
 
 export interface IBoardItem {
-    upk: string;
+    upk: number;
     index: number;
     user: string;
     title: string;

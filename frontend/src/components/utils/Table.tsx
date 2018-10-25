@@ -12,27 +12,32 @@ class Table extends React.Component<IProps>{
     constructor(props: IProps) {
         super(props);
     }
+    static defaultProps = {
+        items: [{}]
+    };
     render () {
         return (
-            <table>
-                <colgroup>
-                    <col/>
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.items.map(item => (
+            <div>
+                <table>
+                    <colgroup>
+                        <col/>
+                    </colgroup>
+                    <thead>
                         <tr>
-                            <td>{item}</td>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {this.props.items.map(item => (
+                            <tr>
+                                <td>{item}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }

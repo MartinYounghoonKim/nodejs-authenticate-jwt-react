@@ -29,6 +29,14 @@ class BoardServices extends BaseServices {
                 return Promise.reject(err);
             });
     }
+
+    public deleteBoard (index: number) {
+        const uri = `/board/${index}`;
+
+        return this.delete<{}>(uri)
+            .then(() => Promise.resolve())
+            .catch(() => Promise.reject());
+    }
 }
 
 export const boardServices = new BoardServices;
