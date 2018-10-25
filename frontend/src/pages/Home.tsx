@@ -1,7 +1,7 @@
 import * as React from 'react';
 // import Table from '../components/utils/Table';
-
-import Board from '../components/Board';
+import Modal from '../components/utils/Modal';
+import BoardContainer from '../containers/Board.container';
 
 const Home = () => {
     return (
@@ -9,7 +9,8 @@ const Home = () => {
             <h2>
                 홈
             </h2>
-            <Board/>
+            <BoardContainer/>
+            <Modal/>
             {/*<Table/>*/}
         </div>
     )
