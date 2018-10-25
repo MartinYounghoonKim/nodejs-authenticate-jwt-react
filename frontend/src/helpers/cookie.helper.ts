@@ -21,3 +21,5 @@ class CookieHelper implements ICookieHelper {
 }
 
 export const cookieHelper = new CookieHelper;
+
+export default cookieHelper;

@@ -29,7 +29,7 @@ class AuthServices extends BaseServices {
         return this.post<IResponseSignin>(uri, payload)
             .then(res => {
                 const { accessToken } = res.data;
-                this.setAccessToken(accessToken);
+                this.accessToken = accessToken;
                 cookieHelper.set('accessToken', accessToken);
 
                 return Promise.resolve(res.data);

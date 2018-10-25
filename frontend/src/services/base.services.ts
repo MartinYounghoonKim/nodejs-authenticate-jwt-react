@@ -1,6 +1,7 @@
 import axios, {AxiosError, AxiosInstance} from 'axios';
 import 'es6-promise';
 import {IResponseReissueAccessToken} from "../interface/services/Authentication.interface";
+import {cookieHelper} from "../helpers/cookie.helper";
 
 export interface IAJAXResponse<T> {
     data: T;
@@ -11,14 +12,27 @@ export interface IAJAXResponse<T> {
 
 export class BaseServices {
     private readonly axios: AxiosInstance;
+    private readonly _accessToken: string;
+    private readonly _refreshToken: string;
 
     constructor () {
+        const accessToken = this._accessToken || cookieHelper.get('accessToken');
         this.axios = axios.create({
             baseURL: '//localhost:8000'
         });
+        this._accessToken = accessToken;
+        this.init();
     }
 
-    protected setAccessToken (accessToken: string) {
+    private init () {
+        this.accessToken = this._accessToken;
+    }
+
+    public get accessToken (): string {
+        return this._accessToken;
+    }
+
+    public set accessToken (accessToken: string) {
         this.axios.defaults.headers.common['x-access-token'] = accessToken;
     }
 
