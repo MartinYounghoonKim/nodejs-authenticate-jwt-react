@@ -13,24 +13,21 @@ interface IProps {
     };
     isShow?: boolean;
 }
-const Modal = ({ isShow, children }: IProps) => {
+
+const Modal: React.SFC<IProps> = ({ isShow = false, children }: IProps) => {
     if (!isShow) {
         return null;
     }
     return (
         <div className="modal">
             <div className="modal-header">
-                {children.header}
+                {children.header}``
             </div>
             <div className="modal-content">
                 {children.content}
             </div>
         </div>
     )
-};
-
-Modal.defaultProps = {
-    isShow: false
 };
 
 export default Modal;

@@ -19,7 +19,7 @@ class BoardContainer extends React.Component<IProps, IStates> {
         };
     }
     public loadFunc = () => {
-        console.log(123);
+        // console.log(123);
     };
     public componentDidMount () {
         boardServices.fetchBoard()
@@ -30,7 +30,7 @@ class BoardContainer extends React.Component<IProps, IStates> {
             });
     }
     public redirectDetailPage = (index: number) => {
-        console.log(index);
+        // console.log(index);
     };
 
     public deleteBoardItem = (index: number) => {
@@ -41,7 +41,7 @@ class BoardContainer extends React.Component<IProps, IStates> {
                 });
             });
     };
-    render () {
+    public render () {
         const {
             items
         } = this.state;

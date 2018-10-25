@@ -1,13 +1,9 @@
 import * as React from 'react';
 
-export class Header extends React.Component{
-    render () {
-        return (
-            <div>
-                Header
-            </div>
-        )
-    }
-}
+const Header: React.SFC = () => (
+    <div>
+        Header
+    </div>
+);
 
 export default Header;

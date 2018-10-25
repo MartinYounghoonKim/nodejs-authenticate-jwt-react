@@ -8,7 +8,7 @@ interface IProps {
     height?: string;
     children: ReactNode
 }
-const InfiniteTable = ({ height, loadFunction, children }: IProps) => {
+const InfiniteTable = ({ height = 'auto', loadFunction, children }: IProps) => {
     const style = {
         height,
         overflow: 'auto'
@@ -26,10 +26,6 @@ const InfiniteTable = ({ height, loadFunction, children }: IProps) => {
             </InfiniteScroll>
         </div>
     )
-};
-
-InfiniteTable.defaultProps = {
-    height: 'auto'
 };
 
 export default InfiniteTable;

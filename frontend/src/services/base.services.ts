@@ -24,10 +24,6 @@ export class BaseServices {
         this.init();
     }
 
-    private init () {
-        this.accessToken = this._accessToken;
-    }
-
     public get accessToken (): string {
         return this._accessToken;
     }
@@ -155,6 +151,10 @@ export class BaseServices {
         } else {
             // Error tracking 할 부분 삽입
         }
+    }
+
+    private init () {
+        this.accessToken = this._accessToken;
     }
 }
 

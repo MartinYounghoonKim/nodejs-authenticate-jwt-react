@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
-import { Router, browserHistory } from 'react-router'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+// import { Router, browserHistory } from 'react-router'
+// import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import {
     Home,

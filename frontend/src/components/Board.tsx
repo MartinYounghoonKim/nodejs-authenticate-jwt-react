@@ -8,7 +8,7 @@ interface IProps {
     deleteEvent: (key: number) => void;
 }
 
-const Board = ({ redirectEvent, items, deleteEvent }: IProps) => {
+const Board: React.SFC<IProps> = ({ redirectEvent, items, deleteEvent }: IProps) => {
     return (
         <table>
             <thead>

@@ -12,7 +12,7 @@ class BoardForm extends React.Component<IProps>{
     constructor(props: IProps) {
         super(props);
     }
-    submit = (e: FormEvent) => {
+    public submit = (e: FormEvent) => {
         e.preventDefault();
         const title = this.title.value;
         const content = this.content.value;
@@ -23,7 +23,7 @@ class BoardForm extends React.Component<IProps>{
             });
     };
 
-    render () {
+    public render () {
         return (
             <form onSubmit={this.submit}>
                 <fieldset>
