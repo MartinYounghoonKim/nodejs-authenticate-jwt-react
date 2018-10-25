@@ -1,11 +1,10 @@
-import * as React from 'react';
+import React, { Fragment } from 'react';
 
 import Board from "../components/Board";
 import InfinitetTable from '../components/utils/InfiniteTable';
 
 import {boardServices} from "../services/board.services";
 import {IBoardItem} from "../interface/services/Board.interface";
-
 
 interface IProps {}
 interface IStates {
@@ -46,12 +45,14 @@ class BoardContainer extends React.Component<IProps, IStates> {
             deleteBoardItem
         } = this;
         return (
-            <InfinitetTable height="100px" loadFunction={this.loadFunc}>
-                <Board
-                    items={items}
-                    deleteEvent={deleteBoardItem}
-                />
-            </InfinitetTable>
+            <Fragment>
+                <InfinitetTable height="100px" loadFunction={this.loadFunc}>
+                    <Board
+                        items={items}
+                        deleteEvent={deleteBoardItem}
+                    />
+                </InfinitetTable>
+            </Fragment>
         )
     }
 }

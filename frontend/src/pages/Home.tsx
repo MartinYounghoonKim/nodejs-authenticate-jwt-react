@@ -10,7 +10,12 @@ const Home = () => {
                 홈
             </h2>
             <BoardContainer/>
-            <Modal/>
+            <Modal>
+                {{
+                    header: 'test',
+                    content: (<h1>asdf</h1>)
+                }}
+            </Modal>
             {/*<Table/>*/}
         </div>
     )
