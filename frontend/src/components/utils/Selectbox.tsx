@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ChangeEvent } from "react";
 
 interface IProps {
+    name?: string;
     options: IOption[];
     onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
     value: string | number;

@@ -2,8 +2,8 @@
  * @description Required request signup
  */
 
-export type IUserPosition = 'Developer' | 'Designer' | 'Director' | '';
-export type IUserRole = 'Admin' | 'Guest' | '';
+export type IUserPosition = UserPosition.DIRECTOR | UserPosition.DESIGNER | UserPosition.DEVELOPER;
+export type IUserRole = UserRole.ADMIN | UserRole.GUEST;
 
 export const enum UserPosition {
     DEVELOPER = 'Developer',

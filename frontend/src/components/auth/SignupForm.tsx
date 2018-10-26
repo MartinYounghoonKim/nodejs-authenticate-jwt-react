@@ -1,15 +1,18 @@
 import * as React from 'react';
-import { ChangeEvent, FormEvent } from "react";
-import {authServices} from "../../services/auth.services";
-import {RouteComponentProps} from "react-router";
+import { ChangeEvent } from "react";
 import Selectbox from '../../components/utils/Selectbox';
-import { UserRole, UserPosition } from '../../interface/services/Authentication.interface';
-/**
- * @description Props 의 interface
- */
-interface IState {
-    role: UserRole.GUEST | UserRole.ADMIN;
-    position: UserPosition.DIRECTOR | UserPosition.DEVELOPER | UserPosition.DESIGNER ;
+import {UserRole, UserPosition, IUserRole, IUserPosition} from '../../interface/services/Authentication.interface';
+import { ISubmitParams } from "../../containers/auth/Signup.container";
+import {FormEvent} from "react";
+
+type IState = {
+    uid: string;
+    password: string;
+    role: IUserRole;
+    position: IUserPosition;
+}
+interface IProps {
+    onSubmit: (params: ISubmitParams) => (e: FormEvent) => void;
 }
 const roleOptions = [
     {
@@ -36,75 +39,65 @@ const positionOptions = [
     },
 ];
 
-type ISelectboxOptions = 'position' | 'role';
-
-export default class SigninForm extends React.Component<RouteComponentProps, IState> {
-    private uid: HTMLInputElement;
-    private password: HTMLInputElement;
-    constructor (props: RouteComponentProps) {
+export default class SigninForm extends React.Component<IProps, IState> {
+    constructor (props: IProps) {
         super(props);
         this.state = {
+            uid: '',
+            password: '',
             role: UserRole.GUEST,
             position: UserPosition.DESIGNER
         };
     }
-
-    submit = (e: FormEvent): void => {
-        e.preventDefault();
-        const uid = this.uid.value;
-        const password = this.password.value;
-        const { role, position } = this.state;
-        const isEmpty = uid.length <= 0 || password.length <= 0 || role.length <= 0 || position.length <= 0;
-        if (isEmpty) {
-            return;
-        }
-
-        authServices.signup({ uid, password, role, position })
-            .then(() => {
-                this.props.history.push('/');
-            })
-            .catch(() => {
-                alert('가입실패');
-            })
-    };
-    changeRole = (e: ChangeEvent<HTMLSelectElement>) => {
+    handleFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
         /**
          * @reference https://stackoverflow.com/questions/37300933/allow-typescript-compiler-to-call-setstate-on-only-one-react-state-property
          */
-        const { value } = e.target;
+        const { value, name } = e.target;
         this.setState({
-            role: value
+            [name]: value
         } as IState);
     };
-    changePosition = (e: ChangeEvent<HTMLSelectElement>) => {
-        const { value } = e.target;
+
+    handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        const { value, name } = e.target;
         this.setState({
-            position: value
+            [name]: value
         } as IState);
     };
 
     render () {
         const {
+            handleFieldChange,
+            handleSelectChange
+        } = this;
+        const {
+            uid,
+            password,
             role,
             position,
         } = this.state;
+        const {
+            onSubmit
+        } = this.props;
         return (
             <div>
-                <form onSubmit={this.submit}>
+                <form onSubmit={onSubmit({ uid, password, role, position })}>
                     <fieldset>
                         <label>
                             id
-                            <input type='text' ref={ref => this.uid = ref}/>
+                            <input type='text' onChange={handleFieldChange} name='uid'/>
                         </label>
                         <label>
                             password
-                            <input type='password' ref={ref => this.password = ref}/>
+                            <input type='password' onChange={handleFieldChange} name='password'/>
                         </label>
                         <label>
                             role
                             <Selectbox
                                 options={roleOptions}
-                                onChange={this.changeRole}
+                                onChange={handleSelectChange}
+                                name='role'
                                 value={role}
                             />
                         </label>
@@ -112,7 +105,8 @@ export default class SigninForm extends React.Component<RouteComponentProps, ISt
                             position
                             <Selectbox
                                 options={positionOptions}
-                                onChange={this.changePosition}
+                                onChange={handleSelectChange}
+                                name='position'
                                 value={position}
                             />
                         </label>
