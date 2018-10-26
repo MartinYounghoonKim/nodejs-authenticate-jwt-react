@@ -11,7 +11,7 @@ exports.getBoard = (payload) => {
                     resolve({
                         status: 200,
                         message: 'Success',
-                        data: result
+                        data: result[0]
                     });
                 } else {
                     reject({

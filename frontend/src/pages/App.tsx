@@ -9,13 +9,14 @@ import {
     Home,
     Signin,
     Signup,
+    ViewBoard,
     RegisterBoard
 } from './index';
 
 import Navigator from '../components/Navigator';
 
 class App extends React.Component {
-    public render () {
+    render () {
         return (
             <div>
                 <Navigator/>
@@ -25,6 +26,7 @@ class App extends React.Component {
                     <Route path="/signin" component={Signin}/>
                     <Route exact={true} path="/signup" component={Signup}/>
                     <Route path="/register" component={RegisterBoard}/>
+                    <Route path="/:index" component={ViewBoard}/>
                 </Switch>
             </div>
         )

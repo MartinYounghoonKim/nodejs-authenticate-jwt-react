@@ -6,7 +6,7 @@ class BoardServices extends BaseServices {
         super();
     }
 
-    public fetchBoard (): Promise<IBoardItem[]> {
+    fetchBoards (): Promise<IBoardItem[]> {
         const uri = '/board';
 
         return this.get<any>(uri)
@@ -18,7 +18,15 @@ class BoardServices extends BaseServices {
             });
     }
 
-    public createBoard (payload: ICreateBoardItem): Promise<IBoardItem> {
+    fetchBoard (index: string): Promise<IBoardItem> {
+        const uri = `/board/${index}`;
+
+        return this.get<IBoardItem>(uri)
+            .then(res => Promise.resolve(res.data))
+            .catch(err => Promise.reject(err));
+    }
+
+    createBoard (payload: ICreateBoardItem): Promise<IBoardItem> {
         const uri = '/board';
 
         return this.post<IBoardItem>(uri, payload)
@@ -30,7 +38,7 @@ class BoardServices extends BaseServices {
             });
     }
 
-    public deleteBoard (index: number) {
+    deleteBoard (index: number) {
         const uri = `/board/${index}`;
 
         return this.delete<{}>(uri)

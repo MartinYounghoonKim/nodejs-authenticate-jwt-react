@@ -12,7 +12,7 @@ export default class SigninForm extends React.Component<IProps> {
     private userId: HTMLInputElement;
     private password: HTMLInputElement;
 
-    public submit = (e: FormEvent): void => {
+    submit = (e: FormEvent): void => {
         e.preventDefault();
         const uid = this.userId.value;
         const password = this.password.value;
@@ -28,7 +28,7 @@ export default class SigninForm extends React.Component<IProps> {
                 // console.log(userInformation);
             });
     };
-    public render () {
+    render () {
         return (
             <div>
                 <form onSubmit={this.submit}>

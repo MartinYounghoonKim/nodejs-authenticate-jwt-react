@@ -20,12 +20,12 @@ class Selectbox extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
     }
-    public renderOptionElement () {
+    renderOptionElement () {
         return this.props.options.map(({ text, value, disabled }) => (
             <option key={value} value={value} disabled={disabled}>{text}</option>
         ))
     }
-    public render () {
+    render () {
         const {
             ...rest
         } = this.props;

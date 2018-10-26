@@ -24,11 +24,11 @@ export class BaseServices {
         this.init();
     }
 
-    public get accessToken (): string {
+    get accessToken (): string {
         return this._accessToken;
     }
 
-    public set accessToken (accessToken: string) {
+    set accessToken (accessToken: string) {
         this.axios.defaults.headers.common['x-access-token'] = accessToken;
     }
 

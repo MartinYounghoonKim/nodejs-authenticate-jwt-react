@@ -7,15 +7,15 @@ export interface ICookieHelper {
 };
 
 class CookieHelper implements ICookieHelper {
-    public set (name: string, value: string, options?: CookieAttributes) {
+    set (name: string, value: string, options?: CookieAttributes) {
         Cookie.set(name, value, options);
     }
 
-    public get (name: string) {
+    get (name: string) {
         return Cookie.get(name) || '';
     }
 
-    public destroy (name: string) {
+    destroy (name: string) {
         Cookie.remove(name);
     }
 }

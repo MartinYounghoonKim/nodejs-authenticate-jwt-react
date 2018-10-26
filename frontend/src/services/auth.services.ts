@@ -11,7 +11,7 @@ class AuthServices extends BaseServices {
         super();
     }
 
-    public signup (payload: IRequestSignup): Promise<void> {
+    signup (payload: IRequestSignup): Promise<void> {
         const uri = '/auth/signup';
 
         return this.post<{}>(uri, payload)
@@ -23,7 +23,7 @@ class AuthServices extends BaseServices {
             });
     }
 
-    public signin (payload: IRequestSignin): Promise<IResponseSignin> {
+    signin (payload: IRequestSignin): Promise<IResponseSignin> {
         const uri = '/auth/signin';
 
         return this.post<IResponseSignin>(uri, payload)

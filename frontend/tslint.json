@@ -16,6 +16,10 @@
     "ordered-imports": false,
     "jsx-no-lambda": false,
     "no-shadowed-variable": false,
+    "member-access": [
+      true,
+      "no-public"
+    ],
     "variable-name": [
       true,
       "ban-keywords",

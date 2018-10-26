@@ -21,23 +21,23 @@ class BoardContainer extends React.Component<IProps, IStates> {
             items: []
         };
     }
-    public loadFunc = () => {
+    loadFunc = () => {
         // console.log(123);
     };
-    public componentDidMount () {
-        boardServices.fetchBoard()
+    componentDidMount () {
+        boardServices.fetchBoards()
             .then(boardItems => {
                 this.setState({
                     items: boardItems
                 });
             });
     }
-    public redirectDetailPage = (index: number) => {
+    redirectDetailPage = (index: number) => {
         this.props.history.push('/');
         // console.log(index);
     };
 
-    public deleteBoardItem = (index: number) => {
+    deleteBoardItem = (index: number) => {
         boardServices.deleteBoard(index)
             .then(res => {
                 this.setState({
@@ -45,7 +45,7 @@ class BoardContainer extends React.Component<IProps, IStates> {
                 });
             });
     };
-    public render () {
+    render () {
         const {
             items
         } = this.state;

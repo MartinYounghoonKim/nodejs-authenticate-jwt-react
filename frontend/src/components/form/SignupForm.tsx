@@ -49,7 +49,7 @@ export default class SigninForm extends React.Component<RouteComponentProps, ISt
         };
     }
 
-    public submit = (e: FormEvent): void => {
+    submit = (e: FormEvent): void => {
         e.preventDefault();
         const uid = this.uid.value;
         const password = this.password.value;
@@ -67,7 +67,7 @@ export default class SigninForm extends React.Component<RouteComponentProps, ISt
                 alert('가입실패');
             })
     };
-    public changeRole = (e: ChangeEvent<HTMLSelectElement>) => {
+    changeRole = (e: ChangeEvent<HTMLSelectElement>) => {
         /**
          * @reference https://stackoverflow.com/questions/37300933/allow-typescript-compiler-to-call-setstate-on-only-one-react-state-property
          */
@@ -76,14 +76,14 @@ export default class SigninForm extends React.Component<RouteComponentProps, ISt
             role: value
         } as IState);
     };
-    public changePosition = (e: ChangeEvent<HTMLSelectElement>) => {
+    changePosition = (e: ChangeEvent<HTMLSelectElement>) => {
         const { value } = e.target;
         this.setState({
             position: value
         } as IState);
     };
 
-    public render () {
+    render () {
         const {
             role,
             position,

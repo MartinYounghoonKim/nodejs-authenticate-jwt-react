@@ -8,13 +8,13 @@ class BoardModalContainer extends React.Component<IProps> {
     constructor (props: IProps) {
         super(props);
     }
-    public onConfirm = () => {
+    onConfirm = () => {
         // console.log('confirm');
     };
-    public onCancel = () => {
+    onCancel = () => {
         // console.log('cancel');
     };
-    public render () {
+    render () {
         const {
             onCancel,
             onConfirm,
