@@ -32,9 +32,9 @@ class BoardViewContainer extends React.Component<IProps, IState> {
             item
         } = this.state;
         console.log(item);
-        return (
-            <BoardView item={item}/>
-        )
+        return item ? (
+             <BoardView item={item}/>
+        ): null
     }
 }
 

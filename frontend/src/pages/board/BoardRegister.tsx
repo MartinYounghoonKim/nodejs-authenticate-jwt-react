@@ -14,7 +14,6 @@ const BoardRegister: React.SFC<RouteComponentProps<IProps>> = (props: RouteCompo
     return (
         <Fragment>
           Register
-            {/* @TODO do I have to send props like this ? */}
           <BoardFormContainer history={history}/>
         </Fragment>
     )

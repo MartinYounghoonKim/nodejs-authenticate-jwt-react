@@ -6,10 +6,6 @@ interface IProps {
 }
 
 const BoardView: React.SFC<IProps> = (props: IProps) => {
-    if (props.item === null) {
-        // @TODO is it required ?
-        return null;
-    }
     const {
         upk,
         title,

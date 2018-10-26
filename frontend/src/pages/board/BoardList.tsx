@@ -7,7 +7,6 @@ import {RouteComponentProps} from "react-router";
 interface IProps {}
 
 const BoardList: React.SFC<RouteComponentProps<IProps>> = (props: RouteComponentProps<IProps>) => {
-    // @TODO send history props to children component
     const {
         history
     } = props;
