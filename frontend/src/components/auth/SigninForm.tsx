@@ -1,45 +1,49 @@
-import * as React from 'react';
-import {createRef, FormEvent} from "react";
-import {authServices} from "../../services/auth.services";
-import {History} from "history";
+import React, {ChangeEvent, FormEvent} from 'react';
+import { ISubmitParams } from '../../containers/auth/Signin.container';
 
 interface IProps {
-    onSignin: () => void;
-    history: History;
+    onSubmit: (params: ISubmitParams) => (e: FormEvent) => void;
 }
 
-export default class SigninForm extends React.Component<IProps> {
-    private userId: HTMLInputElement;
-    private password: HTMLInputElement;
+type IState = {
+    uid: string;
+    password: string;
+};
 
-    submit = (e: FormEvent): void => {
-        e.preventDefault();
-        const uid = this.userId.value;
-        const password = this.password.value;
-        const isEmpty = uid.length <= 0 || password.length <= 0;
+export default class SigninForm extends React.Component<IProps, IState> {
+    constructor (props: IProps) {
+        super(props);
+        this.state = {
+            uid: '',
+            password: '',
+        };
+    }
 
-        if (isEmpty) {
-            return;
-        }
+    onChangeEvent = (e: ChangeEvent<HTMLInputElement>) => {
+        const { value, name } = e.currentTarget;
 
-        authServices.signin({ uid, password })
-            .then(userInformation => {
-                this.props.onSignin();
-                // console.log(userInformation);
-            });
+        this.setState({
+            [name]: value
+        } as IState);
     };
+
     render () {
+        const { onSubmit } = this.props;
+        const { uid, password } = this.state;
+        const  {
+            onChangeEvent,
+        } = this;
         return (
             <div>
-                <form onSubmit={this.submit}>
+                <form onSubmit={onSubmit({ uid, password })}>
                     <fieldset>
                         <label>
                             id
-                            <input type='text' ref={ref => this.userId = ref}/>
+                            <input type='text' name="uid" onChange={onChangeEvent}/>
                         </label>
                         <label>
                             password
-                            <input type='password' ref={ref => this.password = ref}/>
+                            <input type='password' name="password" onChange={onChangeEvent}/>
                         </label>
                         <button type="submit">Signin</button>
                     </fieldset>
