@@ -33,6 +33,7 @@ class BoardContainer extends React.Component<IProps, IStates> {
             });
     }
     redirectDetailPage = (index: number) => {
+        console.log(index);
         this.props.history.push('/');
         // console.log(index);
     };
