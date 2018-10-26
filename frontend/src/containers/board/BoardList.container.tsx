@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 
-import BoardList from "../components/board/BoardList";
-import InfinitetTable from '../components/utils/InfiniteTable';
+import BoardList from "../../components/board/BoardList";
+import InfinitetTable from '../../components/utils/InfiniteTable';
 
-import {boardServices} from "../services/board.services";
-import {IBoardItem} from "../interface/services/Board.interface";
+import {boardServices} from "../../services/board.services";
+import {IBoardItem} from "../../interface/services/Board.interface";
 import {History} from "history";
 
 interface IProps {

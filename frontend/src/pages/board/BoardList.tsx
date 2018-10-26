@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import BoardListContainer from '../../containers/BoardList.container';
-import BoardModalContainer from '../../containers/BoardModal.container';
+import BoardListContainer from '../../containers/board/BoardList.container';
+import BoardModalContainer from '../../containers/board/BoardModal.container';
 import {RouteComponentProps} from "react-router";
 
 interface IProps {}

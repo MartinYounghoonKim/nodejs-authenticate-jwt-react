@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteComponentProps } from "react-router";
-import BoardViewContainer from '../../containers/BoardView.container';
+import BoardViewContainer from '../../containers/board/BoardView.container';
 
 interface IProps {
     index: string;

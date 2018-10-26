@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { RouteComponentProps} from "react-router";
-import BoardFormContainer from '../../containers/BoardForm.container';
+import BoardFormContainer from '../../containers/board/BoardForm.container';
 import {Fragment} from 'react';
 
 interface IProps {}

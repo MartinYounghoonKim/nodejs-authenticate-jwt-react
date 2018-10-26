@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from "../components/utils/Modal";
+import Modal from "../../components/utils/Modal";
 
 interface IProps {
 

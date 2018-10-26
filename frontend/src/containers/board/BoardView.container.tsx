@@ -1,7 +1,7 @@
 import React from 'react';
-import {boardServices} from "../services/board.services";
-import {IBoardItem} from "../interface/services/Board.interface";
-import BoardView from '../components/board/BoardView';
+import {boardServices} from "../../services/board.services";
+import {IBoardItem} from "../../interface/services/Board.interface";
+import BoardView from '../../components/board/BoardView';
 
 interface IProps {
     index: string;

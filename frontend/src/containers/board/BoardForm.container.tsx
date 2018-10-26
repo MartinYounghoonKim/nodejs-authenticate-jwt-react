@@ -1,6 +1,6 @@
 import React, {FormEvent} from 'react';
-import BoardForm from '../components/board/BoardForm';
-import {boardServices} from "../services/board.services";
+import BoardForm from '../../components/board/BoardForm';
+import {boardServices} from "../../services/board.services";
 import * as H from 'history';
 
 interface IProps {

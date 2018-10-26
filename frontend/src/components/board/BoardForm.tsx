@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ISubmitParams} from "../../containers/BoardForm.container";
+import {ISubmitParams} from "../../containers/board/BoardForm.container";
 
 interface IProps {
     onSubmit: (params: ISubmitParams) => void;
