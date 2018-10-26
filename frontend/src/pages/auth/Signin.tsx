@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import SigninForm from '../components/form/SigninForm';
+import SigninForm from '../../components/auth/SigninForm';
 
 interface IProps {
     param: string

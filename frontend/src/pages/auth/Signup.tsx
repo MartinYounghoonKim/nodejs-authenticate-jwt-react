@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from "react-router";
 
-import SignupForm from '../components/form/SignupForm';
+import SignupForm from '../../components/auth/SignupForm';
 
 interface IProps {}
 

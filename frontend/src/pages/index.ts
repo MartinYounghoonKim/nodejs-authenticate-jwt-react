@@ -1,5 +1,5 @@
-export { default as Home } from './Home';
-export { default as Signin } from './Signin';
-export { default as Signup } from './Signup';
-export { default as RegisterBoard } from './RegisterBoard';
-export { default as ViewBoard } from './ViewBoard';
+export { default as Home } from './board/BoardList';
+export { default as Signin } from './auth/Signin';
+export { default as Signup } from './auth/Signup';
+export { default as RegisterBoard } from './board/BoardRegister';
+export { default as ViewBoard } from './board/BoardView';

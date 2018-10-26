@@ -72,17 +72,17 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
 
 CREATE TABLE boards (
-      `index` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Board item`s primary key',
+      `index` int(11) NOT NULL AUTO_INCREMENT COMMENT BBoardListist,
       user varchar(50) NOT NULL COMMENT 'Creator',
       upk int(11) NOT NULL COMMENT 'Creator`s primary key',
-      title varchar(50) NOT NULL COMMENT 'Board item`s title',
-      content mediumtext NOT NULL COMMENT 'Board item`s content',
-      regdate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Board item`s regdate',
-      editdate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Board item`s edit date',
+      title varchar(50) NOT NULL COMMENT BoardList,
+      cBoardListt mediumtext NOT NULL COMMENT BoardList,
+      regdate dateBoardListNOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT BoardList,
+      editdate datetime NOT NULBoardListAULT CURRENT_TIMESTAMP COMMENT BoardList,
   PRIMARY KEY (`index`)
   
 )
-COLLATE='utf8_general_ci' ENGINE=InnoDB AUTO_INCREMENT=1;
+COLLATE='utf8_gBoardListl_ci' ENGINE=InnoDB AUTO_INCREMENT=1;
 ```
 
 2. Start redis cli server on background

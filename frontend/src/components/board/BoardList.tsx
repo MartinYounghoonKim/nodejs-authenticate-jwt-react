@@ -1,5 +1,5 @@
 import React from 'react';
-import {IBoardItem} from "../interface/services/Board.interface";
+import {IBoardItem} from "../../interface/services/Board.interface";
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ interface IProps {
     deleteEvent: (key: number) => void;
 }
 
-const Board: React.SFC<IProps> = ({ redirectEvent, items, deleteEvent }: IProps) => {
+const BoardList: React.SFC<IProps> = ({ redirectEvent, items, deleteEvent }: IProps) => {
     return (
         <table>
             <thead>
@@ -42,4 +42,4 @@ const Board: React.SFC<IProps> = ({ redirectEvent, items, deleteEvent }: IProps)
     )
 };
 
-export default Board;
+export default BoardList;

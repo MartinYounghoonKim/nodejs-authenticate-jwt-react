@@ -1,31 +1,26 @@
 import * as React from 'react';
-import {FormEvent} from "react";
-import { boardServices } from "../../services/board.services";
+import {ISubmitParams} from "../../containers/BoardForm.container";
 
 interface IProps {
-    onSubmit: () => void;
+    onSubmit: (params: ISubmitParams) => void;
 }
 
 class BoardForm extends React.Component<IProps>{
     private title: HTMLInputElement;
     private content: HTMLInputElement;
+
     constructor(props: IProps) {
         super(props);
     }
-    submit = (e: FormEvent) => {
-        e.preventDefault();
-        const title = this.title.value;
-        const content = this.content.value;
-
-        boardServices.createBoard({ title, content })
-            .then(() => {
-                this.props.onSubmit();
-            });
-    };
 
     render () {
+        const { onSubmit } = this.props;
         return (
-            <form onSubmit={this.submit}>
+            <form onSubmit={(e) => onSubmit({
+                e,
+                title: this.title.value,
+                content: this.content.value
+            })}>
                 <fieldset>
                     <label>
                         Title

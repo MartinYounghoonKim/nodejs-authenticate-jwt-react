@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import Board from "../components/Board";
+import BoardList from "../components/board/BoardList";
 import InfinitetTable from '../components/utils/InfiniteTable';
 
 import {boardServices} from "../services/board.services";
@@ -14,7 +14,7 @@ interface IStates {
     items: IBoardItem[];
 }
 
-class BoardContainer extends React.Component<IProps, IStates> {
+class BoardListContainer extends React.Component<IProps, IStates> {
     constructor (props: IProps) {
         super(props);
         this.state = {
@@ -57,7 +57,7 @@ class BoardContainer extends React.Component<IProps, IStates> {
         return (
             <Fragment>
                 <InfinitetTable loadFunction={this.loadFunc}>
-                    <Board
+                    <BoardList
                         items={items}
                         redirectEvent={redirectDetailPage}
                         deleteEvent={deleteBoardItem}
@@ -68,4 +68,4 @@ class BoardContainer extends React.Component<IProps, IStates> {
     }
 }
 
-export default BoardContainer;
+export default BoardListContainer;

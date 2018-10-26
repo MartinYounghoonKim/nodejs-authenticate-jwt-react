@@ -1,5 +1,5 @@
 import React from 'react';
-import {IBoardItem} from "../interface/services/Board.interface";
+import {IBoardItem} from "../../interface/services/Board.interface";
 
 interface IProps {
     item: IBoardItem
