@@ -1,9 +1,14 @@
 import * as React from 'react';
 import BoardForm from '../components/form/BoardForm';
-import {match} from "react-router";
+import { RouteComponentProps} from "react-router";
 
+interface IProps {}
 
-const RegisterBoard = ({ match, history }: { match: match<{param: string}>, history: any }, {}) => {
+const RegisterBoard: React.SFC<RouteComponentProps<IProps>> = (props: RouteComponentProps<IProps>) => {
+    const {
+        match,
+        history,
+    } = props;
     const redirect = () => {
         history.push('/');
     };

@@ -1,10 +1,17 @@
 import * as React from 'react';
-import {match} from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
 import SigninForm from '../components/form/SigninForm';
-import {History} from "history";
 
-const Signin = ({ match, history }: { match: match<{param: string}>, history: History }) => {
+interface IProps {
+    param: string
+}
+
+const Signin: React.SFC<RouteComponentProps<IProps>> = (props: RouteComponentProps<IProps>) => {
+    const {
+        history,
+        match
+    } = props;
     const redirect = () => {
         history.push('/');
     };

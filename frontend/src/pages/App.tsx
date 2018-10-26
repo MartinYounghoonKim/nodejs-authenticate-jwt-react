@@ -20,7 +20,7 @@ class App extends React.Component {
             <div>
                 <Navigator/>
                 <Switch>
-                    <Route exact={true} path="/" component={<Home/>}/>
+                    <Route exact={true} path="/" component={Home}/>
                     <Route path="/signin/:param" component={Signin}/>
                     <Route path="/signin" component={Signin}/>
                     <Route exact={true} path="/signup" component={Signup}/>

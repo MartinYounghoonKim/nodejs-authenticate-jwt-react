@@ -3,7 +3,9 @@ import { RouteComponentProps } from "react-router";
 
 import SignupForm from '../components/form/SignupForm';
 
-const Signup = (props: RouteComponentProps) => (
+interface IProps {}
+
+const Signup: React.SFC<RouteComponentProps<IProps>> = (props: RouteComponentProps<IProps>) => (
     <div>
         <h2>Signup</h2>
         <SignupForm {...props}/>
