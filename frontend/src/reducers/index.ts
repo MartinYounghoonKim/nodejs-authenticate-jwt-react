@@ -16,8 +16,25 @@ const board = (state: any = boardItemState, action: any) => {
   }
 };
 
+const userItemState: any = {
+    items: 1
+};
+
+const user = (state: any = userItemState, action: any) => {
+    switch (action.type) {
+        case FETCH_BOARD_ITEMS:
+            return {
+                items: state.items + 1
+            };
+        default:
+            return state;
+    }
+};
+
+
 const boardApp = combineReducers({
-    board
+    board,
+    user
 });
 
 export default boardApp;
