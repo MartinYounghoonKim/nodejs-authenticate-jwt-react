@@ -7,8 +7,13 @@ import {boardServices} from "../../services/board.services";
 import {IBoardItem} from "../../interface/services/Board.interface";
 import {History} from "history";
 
+import { connect } from 'react-redux';
+import {fetchBoardItems} from "../../actions";
+
 interface IProps {
-    history: History
+    item1: any,
+    history: History,
+    fetchBoardItems: () => void
 }
 interface IStates {
     items: IBoardItem[];
@@ -51,11 +56,16 @@ class BoardListContainer extends React.Component<IProps, IStates> {
             items
         } = this.state;
         const {
+            item1,
+            fetchBoardItems
+        } = this.props;
+        const {
             deleteBoardItem,
             redirectDetailPage,
         } = this;
         return (
             <Fragment>
+                {item1}
                 <InfinitetTable loadFunction={this.loadFunc}>
                     <BoardList
                         items={items}
@@ -63,9 +73,19 @@ class BoardListContainer extends React.Component<IProps, IStates> {
                         deleteEvent={deleteBoardItem}
                     />
                 </InfinitetTable>
+                <button onClick={fetchBoardItems}>잉</button>
             </Fragment>
         )
     }
 }
+let mapDispatchToProps = (dispatch: any) => {
+    return {
+        fetchBoardItems: () => dispatch(fetchBoardItems()),
+    }
+};
 
-export default BoardListContainer;
+export default connect((state: any) => {
+    return {
+        item1: state.board.items
+    }
+}, mapDispatchToProps)(BoardListContainer) ;
